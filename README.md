@@ -38,21 +38,21 @@ Semua widget bekerja sama untuk membuat tata letak antarmuka pengguna yang respo
 
 ## Cara Implementasi
 1. Membuat Proyek Flutter Baru:
-    - Jalankan perintah flutter create stok_makanan_mobile untuk membuat proyek Flutter baru dengan nama stok_makanan_mobile.
+    - Menjalankan perintah flutter create stok_makanan_mobile untuk membuat proyek Flutter baru dengan nama stok_makanan_mobile.
 
 2. Membuat File menu.dart:
-    - Buat file baru dengan nama menu.dart untuk menyimpan kode implementasi aplikasi.
+    - Membuat file baru bernama menu.dart untuk menyimpan kode implementasi aplikasi.
 
 3. Implementasi Kode Program dalam menu.dart:
-    - Dalam menu.dart, buat sebuah class MyHomePage yang merupakan turunan dari StatelessWidget.
-        - Dalam MyHomePage, buat sebuah widget Scaffold sebagai struktur dasar aplikasi.
+    - Dalam menu.dart, membuat sebuah class MyHomePage yang merupakan turunan dari StatelessWidget.
+        - Dalam MyHomePage, membuat sebuah widget Scaffold sebagai struktur dasar aplikasi.
             - Tambahkan AppBar dengan judul "Stok Makanan Mobile".
             - Bungkus kontennya dalam SingleChildScrollView agar halaman dapat di-scroll
             - Isi body dari Scaffold dengan berbagai widget yang diperlukan.
             - GridView.count untuk menampilkan tiga tombol, dengan properti children diisi oleh objek-objek ItemCard.
             - Mendefinisikan sebuah list items yang berisi objek Item untuk setiap tombol yang ingin dibuat
             - Dalam class Item, tentukan tiga atribut: name, icon, dan color (background color button).
-            - Dalam class ItemCard, buat widget Material dengan child InkWell. Isi properti onTap dengan fungsi yang menampilkan SnackBar sesuai permintaan tugas.
+            - Dalam class ItemCard, membuat widget Material dengan child InkWell. Isi properti onTap dengan fungsi yang menampilkan SnackBar sesuai permintaan tugas.
             - Di dalam InkWell, tambahkan Container yang berisi widget Icon dan Text.
 
 4. Menjawab Pertanyaan README:
