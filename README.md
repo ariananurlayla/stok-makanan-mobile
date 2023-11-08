@@ -6,11 +6,11 @@
 <summary> Tugas 7 </summary>
 
 ## Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
-Dalam konteks pengembangan aplikasi Flutter, StatelessWidget dan StatefulWidget memiliki perbedaan utama dalam hal bagaimana mereka menangani perubahan keadaan123.
+Dalam konteks pengembangan aplikasi Flutter, StatelessWidget dan StatefulWidget memiliki perbedaan utama dalam hal bagaimana mereka menangani perubahan keadaan.
 
-StatelessWidget adalah widget yang tidak dapat berubah123. Seluruh konfigurasi yang dimuat di dalamnya telah diinisiasi sejak awal13. Misalnya, jika kita membuat aplikasi berisi teks dengan kata “Hello World” dan aplikasi kita tidak punya fungsi untuk merubah kata tersebut, maka yang digunakan di sini adalah StatelessWidget2.
+StatelessWidget adalah widget yang tidak dapat berubah. Seluruh konfigurasi yang dimuat di dalamnya telah diinisiasi sejak awal. Misalnya, jika kita membuat aplikasi berisi teks dengan kata “Hello World” dan aplikasi kita tidak punya fungsi untuk merubah kata tersebut, maka yang digunakan di sini adalah StatelessWidget.
 
-Di sisi lain, StatefulWidget adalah widget yang dapat berubah-ubah123. Widget ini dapat diperbaharui kapanpun dibutuhkan berdasarkan aksi pengguna atau ketika terjadi perubahan data13. Misalnya, jika kita membuat sebuah aplikasi dimana jika setiap kita memencet icon “+”, angka yang ada di tengah tampilan akan bertambah satu, maka yang digunakan adalah StatefulWidget2.
+Di sisi lain, StatefulWidget adalah widget yang dapat berubah-ubah. Widget ini dapat diperbaharui kapanpun dibutuhkan berdasarkan aksi pengguna atau ketika terjadi perubahan data. Misalnya, jika kita membuat sebuah aplikasi dimana jika setiap kita memencet icon “+”, angka yang ada di tengah tampilan akan bertambah satu, maka yang digunakan adalah StatefulWidget.
 
 ## Sebutkan seluruh widget yang kamu gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
 1. `MyHomePage` (StatelessWidget):
