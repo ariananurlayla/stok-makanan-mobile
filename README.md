@@ -46,14 +46,14 @@ Semua widget bekerja sama untuk membuat tata letak antarmuka pengguna yang respo
 3. Implementasi Kode Program dalam menu.dart:
     - Dalam menu.dart, membuat sebuah class MyHomePage yang merupakan turunan dari StatelessWidget.
         - Dalam MyHomePage, membuat sebuah widget Scaffold sebagai struktur dasar aplikasi.
-            - Tambahkan AppBar dengan judul "Stok Makanan Mobile".
+            - Menambahkan AppBar dengan judul "Stok Makanan Mobile".
             - Bungkus kontennya dalam SingleChildScrollView agar halaman dapat di-scroll
-            - Isi body dari Scaffold dengan berbagai widget yang diperlukan.
+            - Mengisi body dari Scaffold dengan berbagai widget yang diperlukan.
             - GridView.count untuk menampilkan tiga tombol, dengan properti children diisi oleh objek-objek ItemCard.
             - Mendefinisikan sebuah list items yang berisi objek Item untuk setiap tombol yang ingin dibuat
-            - Dalam class Item, tentukan tiga atribut: name, icon, dan color (background color button).
+            - Dalam class Item, terdapat tiga atribut: name, icon, dan color (background color button).
             - Dalam class ItemCard, membuat widget Material dengan child InkWell. Isi properti onTap dengan fungsi yang menampilkan SnackBar sesuai permintaan tugas.
-            - Di dalam InkWell, tambahkan Container yang berisi widget Icon dan Text.
+            - Di dalam InkWell, menambahkan Container yang berisi widget Icon dan Text.
 
 4. Menjawab Pertanyaan README:
     - Menjawab pertanyaan README dengan mencari informasi dari internet dan dokumentasi Flutter.
