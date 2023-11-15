@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stok_makanan_mobile/widgets/left_drawer.dart';
+import 'package:stok_makanan_mobile/screens/shoplist_form.dart';
+import 'package:stok_makanan_mobile/widgets/shop_card.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -12,10 +15,11 @@ class MyHomePage extends StatelessWidget {
         ),
         backgroundColor: Colors.indigo,
       ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
-        // Widget wrapper yang dapat discroll
+        // Widget wrapper yang dapat di-scroll
         child: Padding(
-          padding: const EdgeInsets.all(10.0), // Set padding dari halaman
+          padding: const EdgeInsets.all(10.0), // Set padding halaman
           child: Column(
             // Widget untuk menampilkan children secara vertikal
             children: <Widget>[
@@ -33,7 +37,7 @@ class MyHomePage extends StatelessWidget {
               ),
               // Grid layout
               GridView.count(
-                // Container pada card kita.
+                // Container untuk card
                 primary: true,
                 padding: const EdgeInsets.all(20),
                 crossAxisSpacing: 10,
@@ -86,13 +90,18 @@ class ItemCard extends StatelessWidget {
     return Material(
       color: item.color,
       child: InkWell(
-        // Area responsive terhadap sentuhan
+        // Area responsif terhadap sentuhan
         onTap: () {
           // Memunculkan SnackBar ketika diklik
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
+          // Navigate ke route yang sesuai
+          if (item.name == "Tambah Item") {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const ShopFormPage()));
+          }
         },
         child: Container(
           // Container untuk menyimpan Icon dan Text

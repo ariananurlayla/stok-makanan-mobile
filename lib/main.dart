@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stok_makanan_mobile/menu.dart';
+import 'package:stok_makanan_mobile/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Tugas Individu PBP',
       theme: ThemeData(
         // This is the theme of your application.
         //
