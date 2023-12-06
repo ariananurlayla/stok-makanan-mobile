@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stok_makanan_mobile/screens/menu.dart';
 import 'package:stok_makanan_mobile/screens/shoplist_form.dart';
+import 'package:stok_makanan_mobile/screens/list_item.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -27,7 +28,7 @@ class LeftDrawer extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 Text(
-                  "Selamat datang di Stok Makanan! Catat stok makanan yang kamu punya di sini",
+                  "Selamat datang di Stok Makanan kamu!",
                   textAlign: TextAlign.center,
                   style: const TextStyle(color: Colors.white, fontSize: 15),
                 ),
@@ -37,7 +38,7 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Halaman Utama'),
-            // redirect to MyHomePage
+            // Bagian redirection ke MyHomePage
             onTap: () {
               Navigator.pushReplacement(
                   context,
@@ -49,13 +50,24 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.add_shopping_cart),
             title: const Text('Tambah Item'),
-            // redirect to ShopFormPage
+            // Bagian redirection ke ShopFormPage
             onTap: () {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ShopFormPage(),
                   ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_basket),
+            title: const Text('Daftar Item'),
+            onTap: () {
+              // Route menu ke halaman item
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ItemPage()),
+              );
             },
           ),
         ],
