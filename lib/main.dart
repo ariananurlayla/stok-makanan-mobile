@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         return request;
       },
       child: MaterialApp(
-          title: 'Melody Mementos',
+          title: 'Stok Makanan',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
             useMaterial3: true,
