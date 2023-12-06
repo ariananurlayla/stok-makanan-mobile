@@ -184,3 +184,76 @@ Dengan menerapkan clean architecture, aplikasi Flutter menjadi lebih terstruktur
 - Menambahkan fungsi untuk mengarahkan ke halaman yang sesuai di dalam properti onTap.
 
  </details>
+
+<details>
+<summary> Tugas 8: Integrasi Layanan Web Django dengan Aplikasi Flutter </summary>
+
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Bisa, kita dapat mengambil data JSON tanpa perlu membuat model terlebih dahulu. Artinya, kita menerima data JSON dan memprosesnya sesuai dengan struktur data default yang didefinisikan dalam bahasa pemrograman yang digunakan. Meskipun demikian, disarankan untuk membuat model terlebih dahulu. Tindakan ini akan membuat kode menjadi lebih mudah untuk dikelola, berfungsi sebagai dokumentasi, melakukan validasi terhadap data yang diterima, dan menjaga konsistensi dalam kode.
+
+## Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+Fungsi CookieRequest adalah mengatur permintaan request yang terkait dengan cookie di dalam aplikasi. Kelas ini bertugas memantau informasi sesi pengguna agar dapat mempertahankan data tersebut selama pengguna aktif di aplikasi.
+
+Pentingnya berbagi instance CookieRequest ke semua komponen aplikasi adalah untuk menjamin konsistensi manajemen cookie di seluruh aplikasi. Dengan cara ini, sesi pengguna dapat dikelola dengan cara yang seragam, memastikan bahwa informasi sesi tetap konsisten selama penggunaan aplikasi.
+
+## Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+
+Langkah awalnya adalah mengimpor library dan package yang diperlukan untuk melakukan konversi dan permintaan http. Setelah itu, lakukan pengambilan data dengan mengakses endpoint yang akan memberikan data dalam format JSON. Selanjutnya, lakukan parsing atau konversi respons agar dapat diinterpretasikan sebagai format JSON. Terakhir, untuk menampilkan data di Flutter, berbagai widget dapat digunakan. Dalam contoh ini, digunakan ListView.builder dan widget Text di dalamnya untuk menampilkan data, seperti pada contoh berikut: Text("${snapshot.data![index].fields.description}").
+
+## Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+Dengan menggunakan paket pbp_django_auth, saya membuat CookieRequest yang baru untuk sesi tersebut. Proses autentikasi akan dilakukan dengan mengirimkan username dan password yang dimasukkan oleh pengguna ke endpoint login di Django. Fungsi pada Django akan memberikan respons tergantung pada berhasil atau tidaknya proses autentikasi. Jika respons menunjukkan keberhasilan, menu akan ditampilkan. Namun, jika gagal, halaman akan tetap berada di halaman login.
+
+## Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+- TextField: Berfungsi untuk menerima input dari pengguna.
+- ElevatedButton: Digunakan untuk membuat tombol dengan efek elevasi saat ditekan.
+- ListView.builder: Digunakan untuk membuat daftar item yang dapat discroll secara dinamis.
+- LeftDrawer: Merupakan widget kustom yang digunakan untuk menampilkan jenis navbar di sebelah kiri layar.
+- SizedBox: Berfungsi untuk memberikan jarak antara widget.
+- TextButton: Digunakan untuk menampilkan tombol dalam bentuk teks.
+- FutureBuilder: Berperan dalam membangun widget berdasarkan hasil terbaru dari menjalankan fungsi pada Future.
+
+## Cara Implementasi
+
+# Membuat Aplikasi Django Baru:
+
+- membuat aplikasi baru dalam proyek Django dengan nama "authentication".
+- intall library "corsheaders" dan menambahkan aplikasi tersebut ke daftar INSTALLED_APPS di file settings.py.
+
+# Pengaturan Flutter:
+
+- pada proyek Flutter, ditambahkan konfigurasi agar aplikasi dapat mengakses internet.
+
+# Implementasi Login dan Logout:
+
+- menambahkan fungsi untuk login dan logout di sisi Django.
+- atur routing yang diperlukan untuk menangani halaman login.
+- pada proyek Flutter (main.dart), memastikan bahwa halaman pertama yang terbuka adalah halaman login.
+- menambahkan kondisi untuk melakukan logout ketika tombol logout ditekan.
+
+# Membuat Model:
+
+- menggunakan QuickType untuk menghasilkan model kustom dari JSON model.
+- memasukkan kode model yang dihasilkan ke dalam file lib/models/item.dart.
+
+# Integrasi Flutter dan Django untuk Menambahkan Item Baru:
+
+- menambahkan fungsi create_product_flutter di main/views.py pada sisi Django.
+- menentukan routing yang diperlukan.
+- pada proyek Flutter, atur agar tombol submit pada formulir mengirimkan data ke endpoint create_product_flutter dan menanggapi respons dari fungsi Django tersebut.
+
+# Menampilkan Daftar Item dan Detail Produk:
+
+- membuat file baru di dalam folder screens untuk menampilkan daftar item.
+- melakukan fetch data dari web yang sudah di-deploy dan tampilkan pada aplikasi Flutter.
+- menambahkan properti onTap untuk setiap produk yang akan menampilkan halaman detail dengan semua atribut produk tanpa perlu melakukan fetching data lagi.
+- membuat halaman detail (detail.dart) yang menerima argumen berupa semua atribut produk.
+
+# Opsi Navigasi dari Left Drawer:
+
+- menambahkan opsi navigasi ke halaman daftar item dari left drawer.
+
+ </details>

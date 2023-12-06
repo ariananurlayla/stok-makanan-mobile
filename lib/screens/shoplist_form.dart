@@ -1,156 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:stok_makanan_mobile/widgets/left_drawer.dart';
+import 'package:stok_makanan_mobile/screens/shoplist_form.dart';
+import 'package:stok_makanan_mobile/widgets/shop_card.dart';
+import 'package:stok_makanan_mobile/screens/list_item.dart';
 
-class ShopFormPage extends StatefulWidget {
-  const ShopFormPage({super.key});
 
-  @override
-  State<ShopFormPage> createState() => _ShopFormPageState();
-}
+class MyHomePage extends StatelessWidget {
+  MyHomePage({Key? key}) : super(key: key);
 
-class _ShopFormPageState extends State<ShopFormPage> {
-  final _formKey = GlobalKey<FormState>();
-  String _name = "";
-  int _amount = 0;
-  String _description = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'Form Tambah Produk',
-          ),
+        title: const Text(
+          'Stok Makanan',
         ),
         backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
       ),
       drawer: const LeftDrawer(),
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Nama Item",
-                labelText: "Nama Item",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
+      body: SingleChildScrollView(
+        // Widget wrapper yang dapat discroll
+        child: Padding(
+          padding: const EdgeInsets.all(10.0), // Set padding dari halaman
+          child: Column(
+            // Widget untuk menampilkan children secara vertikal
+            children: <Widget>[
+              const Padding(
+                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
+                child: Text(
+                  'Stok Makanan', // Text yang menandakan toko
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-              onChanged: (String? value) {
-                setState(() {
-                  _name = value!;
-                });
-              },
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return "Nama tidak boleh kosong!";
-                }
-                return null;
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Jumlah",
-                labelText: "Jumlah",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
+              // Grid layout
+              GridView.count(
+                // Container pada card kita.
+                primary: true,
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                crossAxisCount: 3,
+                shrinkWrap: true,
+                children: items.map((Item item) {
+                  // Iterasi untuk setiap item
+                  return ItemCard(item);
+                }).toList(),
               ),
-              onChanged: (String? value) {
-                setState(() {
-                  _amount = int.parse(value!);
-                });
-              },
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return "Jumlah tidak boleh kosong!";
-                }
-                if (int.tryParse(value) == null) {
-                  return "Jumlah harus berupa angka!";
-                }
-                return null;
-              },
-            ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Deskripsi",
-                labelText: "Deskripsi",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-              ),
-              onChanged: (String? value) {
-                setState(() {
-                  _description = value!;
-                });
-              },
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return "Deskripsi tidak boleh kosong!";
-                }
-                return null;
-              },
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.indigo),
-                ),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text('Item berhasil tersimpan'),
-                          content: SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Nama: $_name'),
-                                Text('Jumlah: $_amount'),
-                                Text('Deskripsi: $_description'),
-                              ],
-                            ),
-                          ),
-                          actions: [
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  }
-                  _formKey.currentState!.reset();
-                },
-                child: const Text(
-                  "Save",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ),
-        ])),
+        ),
       ),
     );
   }
+
+  final List<Item> items = [
+    Item("Lihat Item", Icons.checklist, Colors.red),
+    Item("Tambah Item", Icons.add_shopping_cart, Colors.green),
+    Item("Logout", Icons.logout, Colors.blue),
+  ];
+
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+}
+
+class Item {
+  final String name;
+  final IconData icon;
+  final MaterialColor color;
+
+  Item(this.name, this.icon, this.color);
 }
