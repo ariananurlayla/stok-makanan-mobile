@@ -16,7 +16,6 @@ class ShopFormPage extends StatefulWidget {
 class _ShopFormPageState extends State<ShopFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
-  String _artist = "";
   int _amount = 0;
   String _description = "";
   @override
@@ -56,29 +55,6 @@ class _ShopFormPageState extends State<ShopFormPage> {
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return "Nama tidak boleh kosong!";
-                }
-                return null;
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Artis",
-                labelText: "Artis",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-              ),
-              onChanged: (String? value) {
-                setState(() {
-                  _artist = value!;
-                });
-              },
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return "Artis tidak boleh kosong!";
                 }
                 return null;
               },
@@ -145,11 +121,18 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   if (_formKey.currentState!.validate()) {
                     // Kirim ke Django dan tunggu respons
                     // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                    // final response = await request.postJson(
+                    //     "http://ariana-nurlayla-tugas.pbp.cs.ui.ac.id/create-flutter/",
+                    //     jsonEncode(<String, String>{
+                    //       'name': _name,
+                    //       'amount': _amount.toString(),
+                    //       'description': _description,
+                    //       // TODO: Sesuaikan field data sesuai dengan aplikasimu
+                    //     }));
                     final response = await request.postJson(
-                        "http://veronica-kylie-tugas.pbp.cs.ui.ac.id/create-flutter/",
+                        "http://localhost:8000/create-flutter/",
                         jsonEncode(<String, String>{
                           'name': _name,
-                          'artist': _artist,
                           'amount': _amount.toString(),
                           'description': _description,
                           // TODO: Sesuaikan field data sesuai dengan aplikasimu

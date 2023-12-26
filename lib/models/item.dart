@@ -62,9 +62,13 @@ class Fields {
       };
 }
 
-enum Model { MAIN_ITEM }
+enum Model {
+  MAIN_ITEM
+}
 
-final modelValues = EnumValues({"main.item": Model.MAIN_ITEM});
+final modelValues = EnumValues({
+  "main.item": Model.MAIN_ITEM
+});
 
 class EnumValues<T> {
   Map<String, T> map;
