@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stok_makanan_mobile/screens/list_product.dart';
 import 'package:stok_makanan_mobile/screens/menu.dart';
 import 'package:stok_makanan_mobile/screens/shoplist_form.dart';
-import 'package:stok_makanan_mobile/screens/list_item.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -28,9 +28,13 @@ class LeftDrawer extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 Text(
-                  "Selamat datang di Stok Makanan kamu!",
+                  "Catat seluruh stok makanan di sini!",
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white, fontSize: 15),
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.white,
+                  ),
                 ),
               ],
             ),
@@ -55,7 +59,7 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ShopFormPage(),
+                    builder: (context) => const ShopFormPage(),
                   ));
             },
           ),
@@ -63,10 +67,10 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.shopping_basket),
             title: const Text('Daftar Item'),
             onTap: () {
-              // Route menu ke halaman item
+              // Route menu ke halaman produk
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ItemPage()),
+                MaterialPageRoute(builder: (context) => const ProductPage()),
               );
             },
           ),

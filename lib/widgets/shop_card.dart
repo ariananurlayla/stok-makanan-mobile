@@ -1,21 +1,27 @@
+import 'package:stok_makanan_mobile/screens/list_product.dart';
+import 'package:stok_makanan_mobile/screens/login.dart';
 import 'package:stok_makanan_mobile/screens/shoplist_form.dart';
-import 'package:stok_makanan_mobile/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:stok_makanan_mobile/screens/list_item.dart';
-import 'package:stok_makanan_mobile/screens/login.dart';
 
-class ItemCard extends StatelessWidget {
-  final Item item;
+class ShopItem {
+  final String name;
+  final IconData icon;
+  final Color cardColor;
+  ShopItem(this.name, this.icon, this.cardColor);
+}
 
-  const ItemCard(this.item, {super.key}); // Constructor
+class ShopCard extends StatelessWidget {
+  final ShopItem item;
+
+  const ShopCard(this.item, {super.key}); // Constructor
 
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Material(
-      color: item.color,
+      color: item.cardColor,
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () async {
@@ -24,18 +30,20 @@ class ItemCard extends StatelessWidget {
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
-          // Navigate ke route yang sesuai (tergantung jenis tombol)
+
           if (item.name == "Tambah Item") {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const ShopFormPage()));
           } else if (item.name == "Lihat Item") {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const ItemPage()));
+                MaterialPageRoute(builder: (context) => const ProductPage()));
           } else if (item.name == "Logout") {
+            // final response = await request.logout(
+            //     // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+            //     "https://ariana-nurlayla-tugas.pbp.cs.ui.ac.id/auth/logout/");
             final response = await request.logout(
                 // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-                "https://ariana-nurlayla-tugas.pbp.cs.ui.ac.id/auth/logout/");
-            // "http://localhost:8000/auth/logout/");
+                "http://localhost:8000/auth/logout/");
             String message = response["message"];
             if (response['status']) {
               String uname = response["username"];
@@ -63,7 +71,7 @@ class ItemCard extends StatelessWidget {
                 Icon(
                   item.icon,
                   color: Colors.white,
-                  size: 25.0,
+                  size: 30.0,
                 ),
                 const Padding(padding: EdgeInsets.all(3)),
                 Text(
